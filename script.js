@@ -28,6 +28,7 @@ const cv=document.getElementById('bgCanvas');
 if(cv){
   const cx=cv.getContext('2d');
   let W,H,pts=[];
+  const PCOL=['139,92,246','34,211,238']; // violet / cyan
   const resize=()=>{W=cv.width=innerWidth;H=cv.height=innerHeight};
   resize();window.addEventListener('resize',()=>{resize();init()});
   const init=()=>{
@@ -36,7 +37,8 @@ if(cv){
     for(let i=0;i<n;i++)pts.push({
       x:Math.random()*W,y:Math.random()*H,
       vx:(Math.random()-.5)*.18,vy:(Math.random()-.5)*.18,
-      r:Math.random()*.9+.2,op:Math.random()*.4+.15
+      r:Math.random()*.9+.2,op:Math.random()*.4+.15,
+      c:PCOL[i%2]
     });
   };
   init();
@@ -49,7 +51,7 @@ if(cv){
       if(p.x<0)p.x=W;if(p.x>W)p.x=0;
       if(p.y<0)p.y=H;if(p.y>H)p.y=0;
       cx.beginPath();cx.arc(p.x,p.y,p.r,0,Math.PI*2);
-      cx.fillStyle=`rgba(201,185,154,${p.op})`;cx.fill();
+      cx.fillStyle=`rgba(${p.c},${p.op})`;cx.fill();
       const dx=pmx-p.x,dy=pmy-p.y,d=dx*dx+dy*dy;
       if(d<28000){const f=.00012*(1-d/28000);p.vx+=dx*f;p.vy+=dy*f}
       const s=p.vx*p.vx+p.vy*p.vy;if(s>.3){p.vx*=.94;p.vy*=.94}
@@ -58,7 +60,7 @@ if(cv){
       const dx=pts[i].x-pts[j].x,dy=pts[i].y-pts[j].y,d=dx*dx+dy*dy;
       if(d<9000){
         cx.beginPath();cx.moveTo(pts[i].x,pts[i].y);cx.lineTo(pts[j].x,pts[j].y);
-        cx.strokeStyle=`rgba(201,185,154,${.08*(1-d/9000)})`;
+        cx.strokeStyle=`rgba(139,92,246,${.08*(1-d/9000)})`;
         cx.lineWidth=.4;cx.stroke();
       }
     }
@@ -66,6 +68,21 @@ if(cv){
   };
   draw();
 }
+
+// ── 3D TILT ON CARDS ───────────────────────────
+(function(){
+  const sel = '.proj-card,.sk-block,.stat-strip,.edu-block,.more-card';
+  const max = 7, scale = 1.015;
+  document.querySelectorAll(sel).forEach(el=>{
+    el.addEventListener('mousemove', e=>{
+      const r = el.getBoundingClientRect();
+      const px = (e.clientX - r.left)/r.width - 0.5;
+      const py = (e.clientY - r.top)/r.height - 0.5;
+      el.style.transform = `perspective(900px) rotateX(${(-py*max).toFixed(2)}deg) rotateY(${(px*max).toFixed(2)}deg) scale(${scale})`;
+    });
+    el.addEventListener('mouseleave', ()=>{ el.style.transform = ''; });
+  });
+})();
 
 // ── NAV ────────────────────────────────────────
 const nav=document.getElementById('mainNav');

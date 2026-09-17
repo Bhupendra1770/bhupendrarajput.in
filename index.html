@@ -72,6 +72,7 @@
 
 <!-- ─── HERO ─── -->
 <section id="hero">
+  <div id="hero3d"></div>
   <div class="hero-left">
     <div class="hero-eyebrow">Gwalior, Madhya Pradesh · India</div>
     <h1 class="hero-name">Bhupendra<br/><em>Rajput</em></h1>
@@ -184,6 +185,57 @@
     <a href="experience.html" class="btn-line">See Experience ↗</a>
   </div>
 </section>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script>
+(function(){
+  const mount = document.getElementById('hero3d');
+  if(!mount || typeof THREE === 'undefined') return;
+  const W = mount.clientWidth || 560, H = mount.clientHeight || 560;
+  const scene = new THREE.Scene();
+  const camera = new THREE.PerspectiveCamera(45, W/H, 0.1, 100);
+  camera.position.z = 5.2;
+  const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
+  renderer.setSize(W, H);
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
+  mount.appendChild(renderer.domElement);
+
+  const geoOuter = new THREE.IcosahedronGeometry(2.15, 0);
+  const matOuter = new THREE.MeshBasicMaterial({ color: 0x22d3ee, wireframe: true, transparent: true, opacity: 0.22 });
+  const meshOuter = new THREE.Mesh(geoOuter, matOuter);
+  scene.add(meshOuter);
+
+  const geoInner = new THREE.IcosahedronGeometry(1.6, 1);
+  const matInner = new THREE.MeshBasicMaterial({ color: 0x8b5cf6, wireframe: true, transparent: true, opacity: 0.55 });
+  const meshInner = new THREE.Mesh(geoInner, matInner);
+  scene.add(meshInner);
+
+  let mx = 0, my = 0;
+  window.addEventListener('mousemove', e => {
+    mx = (e.clientX / window.innerWidth) - 0.5;
+    my = (e.clientY / window.innerHeight) - 0.5;
+  });
+
+  function animate(){
+    requestAnimationFrame(animate);
+    meshInner.rotation.x += 0.0025;
+    meshInner.rotation.y += 0.0035;
+    meshOuter.rotation.x -= 0.0013;
+    meshOuter.rotation.y -= 0.0009;
+    scene.rotation.y += (mx * 0.5 - scene.rotation.y) * 0.04;
+    scene.rotation.x += (-my * 0.3 - scene.rotation.x) * 0.04;
+    renderer.render(scene, camera);
+  }
+  animate();
+
+  window.addEventListener('resize', () => {
+    const w = mount.clientWidth || 560, h = mount.clientHeight || 560;
+    renderer.setSize(w, h);
+    camera.aspect = w / h;
+    camera.updateProjectionMatrix();
+  });
+})();
+</script>
 
 
 <footer>
