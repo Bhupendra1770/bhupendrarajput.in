@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta name="theme-color" content="#0a0a0a"/>
+<meta name="author" content="Bhupendra Rajput"/>
+<meta name="robots" content="index, follow"/>
+<link rel="canonical" href="https://bhupendrarajput.in/projects.html"/>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%230a0a0a'/%3E%3Ctext x='50' y='68' font-size='58' text-anchor='middle' fill='%23c9b99a' font-family='Georgia,serif'%3EB%3C/text%3E%3C/svg%3E"/>
+<title>Projects — Bhupendra Rajput | AI Engineer | Solution Architect | Backend Tech Lead</title>
+<meta name="description" content="Explore Bhupendra Rajput's featured projects — Cue (MCP voice automation agent), PrintMe (print kiosk SaaS), Brone-X, MediAssist and DevPortal."/>
+<meta name="keywords" content="Bhupendra Rajput, AI Engineer, Solution Architect, Backend Tech Lead, GenAI Engineer, LLM Engineer, RAG Engineer, Python Developer, Gwalior AI Engineer, Madhya Pradesh AI Engineer, VIT Vellore MCA, MCA Data Science, LangChain developer, MCP developer India"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+
+<meta property="og:type" content="website"/>
+<meta property="og:site_name" content="Bhupendra Rajput — Portfolio"/>
+<meta property="og:title" content="Projects — Bhupendra Rajput | AI Engineer | Solution Architect | Backend Tech Lead"/>
+<meta property="og:description" content="Explore Bhupendra Rajput's featured projects — Cue (MCP voice automation agent), PrintMe (print kiosk SaaS), Brone-X, MediAssist and DevPortal."/>
+<meta property="og:url" content="https://bhupendrarajput.in/projects.html"/>
+<meta property="og:locale" content="en_IN"/>
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:title" content="Projects — Bhupendra Rajput | AI Engineer | Solution Architect | Backend Tech Lead"/>
+<meta name="twitter:description" content="Explore Bhupendra Rajput's featured projects — Cue (MCP voice automation agent), PrintMe (print kiosk SaaS), Brone-X, MediAssist and DevPortal."/>
+
+<link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+
+<div id="pageLoad"><span>Bhupendra Rajput</span></div>
+<div id="cur"></div>
+<div id="cur-ring"></div>
+<canvas id="bgCanvas"></canvas>
+
+<nav id="mainNav">
+  <a class="logo" href="index.html">Bhupendra <span>Rajput</span></a>
+  <button class="nav-toggle" id="navToggle" aria-label="Menu"><span></span><span></span><span></span></button>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="index.html">Home</a></li><li><a href="about.html">About</a></li><li><a href="experience.html">Experience</a></li><li><a href="projects.html" class="active">Work</a></li><li><a href="contact.html">Contact</a></li>
+  </ul>
+</nav>
+
+
+<section class="page-hero">
+  <p class="page-kicker">Selected Work</p>
+  <h1 class="page-title">Products I've <em>architected &amp; built</em></h1>
+  <p class="page-lede">From a voice-controlled MCP agent to a self-serve print kiosk SaaS — systems designed end-to-end, from architecture decisions to shipped code.</p>
+</section>
+
+<div class="h-rule"></div>
+
+<section class="proj-sect" id="projects">
+  <p class="sec-label rv">Core Project</p>
+  <h2 class="rv">Cue <em>— MCP Voice Agent</em></h2>
+  <div class="proj-card rv">
+    <div class="proj-tag">Personal Project · Voice AI · MCP</div>
+    <div class="proj-title">Cue<br/><span style="font-size:.55em;color:var(--stone)">Voice-Controlled Software Automation Agent</span></div>
+    <p class="proj-desc">A voice and text AI agent that controls any registered software via natural language, using a custom REST-to-MCP bridge, multi-software tool chaining, and a destructive-action confirmation gate. Also the foundation of my MCA final year project, "Voice-Driven Software Automation Using MCP-Integrated AI Agent."</p>
+    <ul class="proj-list">
+      <li>Custom REST-to-MCP bridge pattern with OpenAPI auto-import for tool registration</li>
+      <li>Multi-software tool chaining with a bounded reasoning loop (max 5 steps)</li>
+      <li>Groq Llama 3.3-70B for reasoning, OpenAI Realtime API for low-latency server-side voice capture</li>
+      <li>Tenant-ready data model with a destructive-action confirmation gate for safety</li>
+    </ul>
+    <div class="proj-chips" style="margin-bottom:28px">
+      <span class="chip">Python</span><span class="chip">FastAPI</span><span class="chip">MCP SDK</span>
+      <span class="chip">Groq</span><span class="chip">React / Vite</span><span class="chip">SQLite</span><span class="chip">Edge-TTS</span>
+    </div>
+  </div>
+</section>
+
+<div class="h-rule"></div>
+
+<section class="proj-sect" id="printme">
+  <p class="sec-label rv">Core Project</p>
+  <h2 class="rv">PrintMe <em>— Kiosk SaaS</em></h2>
+  <div class="proj-card rv">
+    <div class="proj-tag">Founder · Subscription SaaS</div>
+    <div class="proj-title">PrintMe<br/><span style="font-size:.55em;color:var(--stone)">Self-Serve Print Kiosk for Copy Centers</span></div>
+    <p class="proj-desc">A fully on-premise SaaS product for copy centers across India: customers scan a QR code, upload a PDF, pay via UPI, and the shop's own PC silently prints the file — no cloud server, no customer data leaving the shop's network.</p>
+    <ul class="proj-list">
+      <li>FastAPI running locally on the shop's PC, exposed publicly via its own Cloudflare Tunnel subdomain</li>
+      <li>Razorpay integration where payments flow directly from customer to shop owner — no funds pass through my accounts</li>
+      <li>SumatraPDF-based silent printing, triggered the instant a Razorpay webhook confirms payment</li>
+      <li>Distributed as a Windows .exe installer (PyInstaller); one-time licensing model similar to Indian POS software</li>
+    </ul>
+    <div class="proj-chips" style="margin-bottom:28px">
+      <span class="chip">FastAPI</span><span class="chip">Razorpay</span><span class="chip">Cloudflare Tunnel</span>
+      <span class="chip">SumatraPDF</span><span class="chip">PyInstaller</span><span class="chip">Windows</span>
+    </div>
+  </div>
+</section>
+
+<div class="h-rule"></div>
+
+<section id="more-work">
+  <p class="sec-label rv">More Work</p>
+  <h2 class="rv">Additional <em>Builds</em></h2>
+  <div class="more-grid rv">
+    <div class="more-card">
+      <div class="more-tag">Voice AI</div>
+      <div class="more-title">Brone-X</div>
+      <p class="more-desc">Voice-enabled AI interview practice platform — FastAPI/React with screening, Socratic-method, and case-discussion modes, powered by Groq Llama and pgvector.</p>
+      <a href="https://github.com/Bhupendra1770/BRONE-X" target="_blank" rel="noopener" class="chip">GitHub ↗</a>
+    </div>
+    <div class="more-card">
+      <div class="more-tag">Healthcare · RAG</div>
+      <div class="more-title">MediAssist</div>
+      <p class="more-desc">A voice and text medical chatbot that uses RAG to search uploaded medical documents — React/Vite frontend, FastAPI backend, Groq Whisper STT, and pgvector on Neon PostgreSQL.</p>
+    </div>
+    <div class="more-card">
+      <div class="more-tag">Angular · Internal Tooling</div>
+      <div class="more-title">DevPortal</div>
+      <p class="more-desc">A Backstage.io-inspired internal developer portal — Angular 20, Firebase, NgRx, D3.js dependency graphs, and Gemini AI, deployed live.</p>
+    </div>
+  </div>
+</section>
+
+<div class="h-rule"></div>
+
+<section class="cta-band">
+  <p class="sec-label rv">Interested?</p>
+  <h2 class="rv">Let's build the next one<br/><em>together</em></h2>
+  <div class="cta-actions rv">
+    <a href="contact.html" class="btn-solid">Get in Touch</a>
+    <a href="https://github.com/Bhupendra1770" target="_blank" rel="noopener" class="btn-line">GitHub ↗</a>
+  </div>
+</section>
+
+
+<footer>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <a class="logo" href="index.html">Bhupendra <span>Rajput</span></a>
+      <p>AI Engineer, Solution Architect &amp; Backend Tech Lead building production-grade GenAI systems from Gwalior, Madhya Pradesh, India.</p>
+    </div>
+    <div class="footer-cols">
+      <div class="footer-col">
+        <h4>Site</h4>
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="experience.html">Experience</a>
+        <a href="projects.html">Work</a>
+        <a href="contact.html">Contact</a>
+      </div>
+      <div class="footer-col">
+        <h4>Elsewhere</h4>
+        <a href="https://github.com/Bhupendra1770" target="_blank" rel="noopener">GitHub</a>
+        <a href="https://www.linkedin.com/in/bhupendra-rajput-89013323b/" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="mailto:bhupendra360i@gmail.com">Email</a>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>&copy; 2026 Bhupendra Rajput</span>
+    <a class="plain" href="index.html">bhupendrarajput.in</a>
+    <span>AI Engineer · Solution Architect · India</span>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
